@@ -5,38 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arum Raga x Estetio - Strategic Blueprint</title>
 
-    <!-- Modern Typography: Plus Jakarta Sans -->
+    <!-- Professional Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* CSS VARIABLES - MODERN THEME */
+        /* CSS VARIABLES - TOP CONSULTING THEME */
         :root {
-            --bg-body: #0F172A; 
-            --bg-slide: #FFFFFF;
-            --bg-alt: #F8FAFC; 
+            --primary-navy: #002855; 
+            --secondary-blue: #0072CE;
+            --accent-blue: #00A9E0;
+            --text-dark: #333333;
+            --text-muted: #595959;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --danger-red: #D32F2F;
+            --danger-bg: #FDECEA;
+            --border-light: #E0E0E0;
             
-            --text-main: #0F172A;
-            --text-muted: #64748B; 
-            
-            --accent-primary: #0EA5E9; 
-            --accent-dark: #0369A1;
-            --accent-danger: #EF4444; 
-            --accent-success: #10B981; 
-            
-            --border-color: #E2E8F0; 
-            
-            --font-main: 'Plus Jakarta Sans', sans-serif;
-            
-            --radius-md: 16px;
-            --radius-lg: 20px;
-            
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --font-main: 'Inter', Arial, sans-serif;
+            --transition-speed: 0.6s;
         }
 
         * {
@@ -46,9 +38,9 @@
         }
 
         body {
-            background-color: var(--bg-body);
+            background-color: #E5E7EB; /* Latar belakang luar presentasi */
             font-family: var(--font-main);
-            color: var(--text-main);
+            color: var(--text-dark);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,94 +49,70 @@
             padding: 20px;
         }
 
-        /* 16:9 Presentation Canvas */
+        /* 16:9 Presentation Canvas - Interactive & Responsive */
         .deck-container {
             position: relative;
             width: 100%;
             max-width: 1280px;
             aspect-ratio: 16 / 9;
-            max-height: 90vh; /* Prevents being too tall on some screens */
-            background-color: var(--bg-slide);
-            border-radius: var(--radius-md);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-height: 95vh;
+            background-color: var(--white);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            border-radius: 8px;
         }
 
-        /* Header Nav */
+        /* CONSULTING HEADER (Tracker & Action Title) */
         .slide-header {
-            position: absolute;
-            top: 30px;
-            left: 40px;
-            right: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 50;
+            padding: 20px 40px 15px 40px; /* Padding diperkecil */
+            border-bottom: 2px solid var(--primary-navy);
+            background: var(--white);
+            z-index: 20;
+            position: relative;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all var(--transition-speed) ease;
         }
 
-        .brand {
-            font-size: 14px;
+        .slide.active .slide-header {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.1s;
+        }
+
+        .kicker {
+            font-size: 11px;
             font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 10px;
             text-transform: uppercase;
-        }
-
-        .brand i {
-            color: var(--accent-primary);
-            font-size: 20px;
-        }
-
-        /* Footer Nav */
-        .slide-footer {
-            position: absolute;
-            bottom: 25px; 
-            left: 40px;
-            right: 40px;
+            letter-spacing: 1.5px;
+            color: var(--secondary-blue);
+            margin-bottom: 8px; /* Diperkecil */
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            z-index: 50;
+            gap: 20px;
         }
 
-        .controls {
+        .kicker .tracker {
             display: flex;
-            gap: 8px;
+            gap: 12px;
+            color: #BDBDBD;
         }
 
-        .btn-nav {
-            background: var(--bg-alt);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        .kicker .tracker span.active {
+            color: var(--primary-navy);
+            font-weight: 800;
         }
 
-        .btn-nav:hover {
-            background: var(--text-main);
-            color: white;
-        }
-
-        .slide-counter {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 6px 14px;
-            border-radius: 20px;
-            backdrop-filter: blur(4px);
+        /* THE ACTION TITLE - Hallmark of Top Tier Consulting */
+        .action-title {
+            font-size: 22px; /* Ukuran font diperkecil */
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.3;
+            margin: 0;
+            letter-spacing: -0.5px;
         }
 
         /* Slides Core */
@@ -154,237 +122,415 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Optimized padding to maximize content area */
-            padding: 85px 40px 75px 40px; 
             opacity: 0;
             visibility: hidden;
-            transform: scale(0.98) translateY(10px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--white);
             display: flex;
             flex-direction: column;
+            z-index: 5;
         }
 
         .slide.active {
             opacity: 1;
             visibility: visible;
-            transform: scale(1) translateY(0);
             z-index: 10;
         }
 
-        /* Typography */
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            background: var(--bg-alt);
-            color: var(--accent-primary);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-bottom: 12px; /* Reduced */
-            border: 1px solid var(--border-color);
-            align-self: flex-start;
-        }
-
-        .tag.danger { color: var(--accent-danger); background: #FEF2F2; border-color: #FECACA; }
-        .tag.success { color: var(--accent-success); background: #F0FDF4; border-color: #A7F3D0; }
-
-        h1 {
-            font-size: 44px;
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        h2.title {
-            font-size: 30px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px; /* Reduced */
-        }
-
-        p.subtitle {
-            font-size: 15px;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 20px; /* Reduced to save space */
-            max-width: 800px;
-            line-height: 1.5;
-        }
-
-        /* Modern Bento Grid Layouts */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            flex-grow: 1; 
-            min-height: 0; 
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            flex-grow: 1; 
-            min-height: 0; 
-        }
-
-        /* Cards */
-        .card {
-            background: var(--bg-slide);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 24px; /* Reduced padding from 32px to 24px */
+        .content-area {
+            padding: 20px 40px 60px 40px; /* Padding bawah diperkecil agar tidak menabrak footer */
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-sm);
-            transition: box-shadow 0.3s ease;
-            position: relative;
-            /* Removed overflow hidden to prevent clipping text */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--transition-speed) ease;
+            min-height: 0; /* Penting agar isi tidak meluap */
         }
 
-        .card:hover {
-            box-shadow: var(--shadow-md);
+        .slide.active .content-area {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
         }
 
-        .card.bg-alt { background: var(--bg-alt); border: none; }
+        /* CONSULTING FOOTER */
+        .slide-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Tinggi footer diperkecil */
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            border-top: 1px solid var(--border-light);
+            z-index: 50;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-        .card-icon {
-            width: 40px; /* Smaller icon */
-            height: 40px;
-            background: var(--bg-alt);
-            border-radius: 10px;
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-left strong {
+            color: var(--primary-navy);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            pointer-events: auto;
+        }
+
+        .btn-nav {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            color: var(--primary-navy);
+            width: 32px; /* Diperkecil */
+            height: 32px;
+            border-radius: 6px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
-            color: var(--accent-primary);
-            margin-bottom: 16px;
-            border: 1px solid var(--border-color);
-            flex-shrink: 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
         }
 
-        .card.danger .card-icon { color: var(--accent-danger); background: #FEF2F2; border-color: #FECACA; }
+        .btn-nav:hover {
+            background: var(--secondary-blue);
+            color: var(--white);
+            border-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 114, 206, 0.2);
+        }
 
-        .card h3 {
-            font-size: 18px; /* Slightly smaller */
+        .btn-nav:active {
+            transform: translateY(0);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #slideCounter {
+            font-variant-numeric: tabular-nums;
             font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-            line-height: 1.3;
+            color: var(--primary-navy);
+            font-size: 14px;
         }
 
-        .card p {
-            font-size: 13.5px; /* Optimal size for 16:9 cards */
-            color: var(--text-muted);
+        /* SPECIAL STATE: COVER SLIDE FOOTER */
+        .slide-footer.on-cover {
+            background-color: transparent;
+            border-top: none;
+        }
+        .slide-footer.on-cover .footer-left,
+        .slide-footer.on-cover .footer-left strong {
+            color: var(--white);
+            opacity: 0.8;
+        }
+        .slide-footer.on-cover #slideCounter {
+            color: var(--white);
+        }
+        .slide-footer.on-cover .btn-nav {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.4);
+            background-color: transparent;
+        }
+        .slide-footer.on-cover .btn-nav:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--white);
+        }
+
+        /* SPECIAL STATE: COVER SLIDE */
+        .slide-cover {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #00152e 100%);
+            color: var(--white);
+            padding: 60px 80px;
+            justify-content: center;
+        }
+
+        .slide-cover h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--white);
+            max-width: 1000px;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+
+        .slide.active h1 {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.1s;
+        }
+
+        .slide-cover .subtitle {
+            font-size: 20px;
+            color: var(--accent-blue);
+            font-weight: 500;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 20px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+
+        .slide.active .subtitle {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.3s;
+        }
+
+        .slide-cover .branding {
+            position: absolute;
+            bottom: 60px;
+            left: 80px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--white);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .slide.active .branding {
+            opacity: 1;
+            transition-delay: 0.6s;
+        }
+
+        /* LAYOUTS & INTERACTIVE BLOCKS */
+        .column-layout {
+            display: flex;
+            gap: 20px; /* Diperkecil */
+            flex-grow: 1;
+            min-height: 0; /* Penting untuk scroll */
+        }
+
+        .col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0; /* Penting untuk scroll */
+        }
+
+        .col-header {
+            font-size: 16px; /* Diperkecil */
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .col-header i {
+            color: var(--secondary-blue);
+            font-size: 20px;
+        }
+
+        /* Block structure for Strategy (Interactive Feel) */
+        .strategy-block {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            padding: 18px 20px; /* Diperkecil */
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            overflow-y: auto; /* Mencegah teks terpotong */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom Scrollbar untuk kotak konten */
+        .strategy-block::-webkit-scrollbar { width: 5px; }
+        .strategy-block::-webkit-scrollbar-track { background: transparent; }
+        .strategy-block::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 5px; }
+        .strategy-block:hover::-webkit-scrollbar-thumb { background: #BDBDBD; }
+
+        .strategy-block:hover {
+            box-shadow: 0 10px 20px rgba(0, 40, 85, 0.08);
+            border-color: var(--secondary-blue);
+        }
+
+        .strategy-block .tag {
+            background: var(--primary-navy);
+            color: var(--white);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .strategy-block.danger {
+            border-top: 4px solid var(--danger-red);
+        }
+        
+        .strategy-block.danger:hover {
+            border-color: var(--danger-red);
+            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.08);
+        }
+
+        .strategy-block.danger .col-header {
+            border-bottom: none;
+            color: var(--danger-red);
+            padding-bottom: 0;
+        }
+
+        /* Typography & Lists */
+        p {
+            font-size: 13.5px;
             line-height: 1.5;
             margin-bottom: 12px;
         }
 
-        .card p:last-child {
-            margin-bottom: 0;
-        }
-
-        .card p strong {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        /* Modern Lists */
-        .modern-list {
+        ul {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px; /* Reduced gap */
-            /* Removed overflow-y: auto to remove unsightly scrollbars */
+            padding: 0;
+            margin: 0;
         }
 
-        .modern-list li {
+        ul.consulting-list > li {
             position: relative;
             padding-left: 20px;
+            margin-bottom: 12px;
             font-size: 13.5px;
-            color: var(--text-muted);
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        ul.consulting-list > li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--secondary-blue);
+            font-size: 10px;
+        }
+
+        ul.consulting-list > li > strong {
+            color: var(--primary-navy);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        /* Callout / Insight Box */
+        .insight-box {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--secondary-blue);
+            padding: 12px 16px; /* Diperkecil */
+            margin-top: 15px; /* Margin diperkecil */
+            font-size: 13px;
             line-height: 1.5;
         }
 
-        .modern-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 7px;
-            width: 5px;
-            height: 5px;
-            background-color: var(--accent-primary);
-            border-radius: 50%;
-        }
-        
-        .modern-list li strong { color: var(--text-main); }
-
-        /* Flow Diagram */
-        .flow-container {
+        /* CHEVRON FLOW (Value Chain Style) */
+        .chevron-container {
             display: flex;
-            align-items: stretch;
-            justify-content: space-between;
-            gap: 16px;
+            width: 100%;
             flex-grow: 1;
+            margin-top: 15px;
+            gap: 4px;
             min-height: 0;
         }
 
-        .flow-step {
+        .chevron {
             flex: 1;
-            background: var(--bg-alt);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            height: 100%;
-            border: 1px solid var(--border-color);
+            background-color: var(--bg-light);
             position: relative;
+            padding: 20px 25px 20px 35px; /* Diperkecil */
+            clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%);
             display: flex;
             flex-direction: column;
+            transition: all 0.3s ease;
+            overflow-y: auto; /* Bisa di-scroll jika kepanjangan */
+        }
+        
+        .chevron::-webkit-scrollbar { width: 4px; }
+        .chevron::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
+
+        .chevron:hover {
+            transform: scale(1.02);
+            z-index: 2;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .step-number {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            font-size: 40px;
-            font-weight: 800;
-            color: var(--border-color);
-            line-height: 1;
+        .chevron:first-child {
+            padding-left: 25px;
+            clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+            background-color: var(--primary-navy);
+            color: var(--white);
         }
 
-        .flow-arrow {
-            color: var(--border-color);
-            font-size: 28px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
+        .chevron:first-child::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
+
+        .chevron:nth-child(2) {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+        }
+        .chevron:nth-child(2)::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
+
+        .chevron:nth-child(3) {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        .chevron:nth-child(3)::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
+
+        .chevron h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: inherit;
         }
 
-        /* Specific Title Cover Slide */
-        .slide-cover {
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%);
+        .chevron .step-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            opacity: 0.85;
         }
 
-        .slide-cover .subtitle {
-            margin: 0 auto;
-        }
+        .chevron ul.consulting-list > li { color: inherit; font-size: 13px; margin-bottom: 10px;}
+        .chevron ul.consulting-list > li::before { color: var(--white); opacity: 0.6; }
+        .chevron ul.consulting-list > li > strong { color: inherit; font-size: 13.5px;}
 
-        /* Media queries for smaller screens (Laptops) to guarantee fit */
-        @media (max-width: 1100px) {
-            .slide { padding: 75px 30px 65px 30px; }
-            h2.title { font-size: 26px; }
-            p.subtitle { font-size: 14px; margin-bottom: 16px; }
-            .card { padding: 18px; }
-            .card-icon { margin-bottom: 12px; }
-            .card h3 { font-size: 16px; }
-            .card p, .modern-list li { font-size: 12.5px; }
+        /* Media Adjustments for smaller laptop screens */
+        @media (max-width: 1150px) {
+            .slide-cover h1 { font-size: 36px; }
+            .action-title { font-size: 19px; }
+            .slide-header { padding: 15px 30px 10px 30px; }
+            .content-area { padding: 15px 30px 50px 30px; }
+            .slide-cover { padding: 40px 60px; }
+            .slide-cover .branding { left: 60px; bottom: 40px; }
+            .strategy-block { padding: 15px; }
+            p, ul.consulting-list > li { font-size: 12.5px; }
         }
 
     </style>
@@ -393,252 +539,378 @@
 
     <div class="deck-container">
         
-        <!-- Global Header -->
-        <div class="slide-header">
-            <div class="brand">
-                <i class="ph-fill ph-circles-four"></i>
-                ESTETIO GROWTH
-            </div>
-            <div class="tag" style="margin:0; background:transparent; border:none; color:var(--text-muted);">
-                Blueprint Proposal
-            </div>
-        </div>
-
         <!-- SLIDE 1: COVER -->
         <section class="slide slide-cover active">
-            <div class="tag">Digital Transformation Strategy</div>
-            <h1>Project Blueprint:<br>Arum Raga x Estetio</h1>
-            <p class="subtitle" style="font-size: 18px;">Menyelaraskan ulang arah pertumbuhan, menutup kebocoran operasional, dan membangun ekosistem digital yang kokoh.</p>
+            <h1>Blueprint Transformasi Digital:<br>Menutup Celah Operasional dan Membangun Skalabilitas Arum Raga</h1>
+            <p class="subtitle">Proposal Strategis & Arsitektur Sistem</p>
+            <div class="branding">ESTETIO GROWTH</div>
         </section>
 
         <!-- SLIDE 2: AUDIT -->
         <section class="slide">
-            <div class="tag">Tahap 1 • Audit</div>
-            <h2 class="title">Identifikasi Kebocoran Sistem (As-Is)</h2>
-            <p class="subtitle">Berdasarkan hasil observasi, kami memetakan kondisi Arum Raga ke dalam 2 area kritikal yang saat ini menjadi penghambat pertumbuhan (Growth Breakers).</p>
-
-            <div class="grid-2">
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-users-three"></i></div>
-                    <h3>1. Titik Gesekan Pelanggan</h3>
-                    <p style="margin-bottom:0;"><em>(Customer Journey Breakdowns)</em></p>
-                    <ul class="modern-list" style="margin-top: 16px;">
-                        <li><strong>Manual Booking Flow (WA ke Excel):</strong> Ketergantungan 100% pada admin untuk membalas chat. Menciptakan bottleneck di jam sibuk, rentan human-error, dan pengalaman booking lambat.</li>
-                        <li><strong>Manual Feedback Loop:</strong> Pengumpulan review mengandalkan blast WA manual. Tidak scalable dan menghilangkan potensi rating SEO (Google Maps) otomatis dari tamu yang puas.</li>
-                    </ul>
+            <div class="slide-header">
+                <div class="kicker">
+                    <span>Tahap 1: Audit & Identifikasi</span>
+                    <div class="tracker">
+                        <span class="active">• Assessment</span>
+                        <span>• Strategy</span>
+                        <span>• Implementation</span>
+                    </div>
                 </div>
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-shield-warning"></i></div>
-                    <h3>2. Celah Keamanan & Sistem</h3>
-                    <p style="margin-bottom:0;"><em>(System Vulnerabilities)</em></p>
-                    <ul class="modern-list" style="margin-top: 16px;">
-                        <li><strong>Trust-Based Operations:</strong> Beroperasi tanpa sistem kasir (POS) terpusat sangat berisiko. Celah fraud (transaksi tidak dicatat / uang ke rekening pribadi) sangat terbuka bagi owner yang tidak standby.</li>
-                        <li><strong>Manajemen DP Tidak Terlacak:</strong> Layanan High-Ticket yang wajib DP dikelola manual, menyulitkan rekonsiliasi keuangan dan validasi antara admin dan owner.</li>
-                    </ul>
+                <h2 class="action-title">Operasional yang bertumpu pada pencatatan manual dan ketiadaan sistem terpusat menciptakan titik gesekan pelanggan dan celah keamanan finansial.</h2>
+            </div>
+            
+            <div class="content-area">
+                <div class="column-layout">
+                    <div class="col strategy-block">
+                        <div class="col-header">
+                            <i class="ph ph-users-three"></i> Titik Gesekan Pelanggan (Customer Journey)
+                        </div>
+                        <ul class="consulting-list">
+                            <li>
+                                <strong>Manual Booking Flow (WA ke Excel)</strong>
+                                Ketergantungan 100% pada admin untuk membalas chat menciptakan bottleneck di jam sibuk. Proses ini rentan terhadap human-error (salah catat jadwal/nama) dan memberikan pengalaman reservasi yang sangat lambat bagi tamu.
+                            </li>
+                            <li>
+                                <strong>Manual Feedback Loop</strong>
+                                Pengumpulan ulasan pelanggan murni mengandalkan broadcast WA manual. Proses ini tidak memiliki skalabilitas dan secara sistematis menghilangkan potensi Arum Raga untuk secara otomatis meningkatkan rating Local SEO (Google Maps) dari tamu yang puas.
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col strategy-block">
+                        <div class="col-header" style="color: var(--danger-red); border-bottom-color: var(--danger-bg);">
+                            <i class="ph ph-shield-warning" style="color: var(--danger-red);"></i> Celah Keamanan Sistem (Vulnerabilities)
+                        </div>
+                        <ul class="consulting-list">
+                            <li>
+                                <strong>Trust-Based Operations (Tanpa POS)</strong>
+                                Mengandalkan "kepercayaan murni" tanpa pengawasan sistem kasir (POS) sangat berisiko bagi pemilik bisnis yang tidak standby di lokasi. Celah fraud (seperti transaksi tidak dicatat atau dana dialihkan ke rekening pribadi) sangat terbuka lebar.
+                            </li>
+                            <li>
+                                <strong>Manajemen DP (Prepaid) Tidak Terlacak</strong>
+                                Layanan High-Ticket yang mewajibkan Down Payment (DP) masih dikelola secara manual. Hal ini sangat menyulitkan rekonsiliasi keuangan dan validasi pembayaran antara tim admin dan manajemen/owner.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- SLIDE 3: THE INVISIBLE COST -->
         <section class="slide">
-            <div class="tag danger">Impact Analysis</div>
-            <h2 class="title">The Invisible Cost</h2>
-            <p class="subtitle">Apa dampak langsung dari celah sistem operasional ini terhadap skala bisnis Arum Raga?</p>
-
-            <div class="grid-3">
-                <div class="card danger">
-                    <div class="card-icon"><i class="ph ph-wallet"></i></div>
-                    <h3>Risiko Kehilangan Pendapatan (Fraud)</h3>
-                    <p>Tanpa Audit Trail dan sistem QRIS dinamis, setiap celah operasional berpotensi menjadi kebocoran omzet bulanan yang tidak terdeteksi oleh owner.</p>
+            <div class="slide-header">
+                <div class="kicker">
+                    <span>Dampak Bisnis (The Invisible Cost)</span>
+                    <div class="tracker">
+                        <span class="active">• Assessment</span>
+                        <span>• Strategy</span>
+                        <span>• Implementation</span>
+                    </div>
                 </div>
-                <div class="card danger">
-                    <div class="card-icon"><i class="ph ph-chart-line-down"></i></div>
-                    <h3>Stagnasi Skalabilitas</h3>
-                    <p>Selama sistem bertumpu pada "tenaga admin ngetik Excel", Arum Raga tidak akan bisa memproses lonjakan tamu tanpa harus terus-menerus menambah jumlah admin.</p>
-                </div>
-                <div class="card danger">
-                    <div class="card-icon"><i class="ph ph-database"></i></div>
-                    <h3>Data Pelanggan Berserakan</h3>
-                    <p>Tidak adanya sistem CRM membuat data pelanggan setia sulit diolah untuk kampanye promo, mengakibatkan tingkat retensi tamu tertahan di angka rendah.</p>
+                <h2 class="action-title">Celah operasional ini secara langsung berdampak pada risiko kebocoran omzet bulanan, stagnasi kapasitas, dan rendahnya tingkat retensi pelanggan.</h2>
+            </div>
+            
+            <div class="content-area">
+                <div class="column-layout">
+                    <div class="col strategy-block danger">
+                        <div class="col-header">
+                            <i class="ph ph-wallet" style="color: inherit;"></i> Risiko Kehilangan Pendapatan (Fraud)
+                        </div>
+                        <p>Tanpa adanya <strong>Audit Trail</strong> yang ketat dan sistem <strong>QRIS dinamis</strong> terpusat, setiap celah operasional berpotensi menjadi kebocoran omzet bulanan yang sama sekali tidak terdeteksi oleh owner.</p>
+                        <p>Pendapatan yang seharusnya menjadi profit perusahaan berisiko hilang karena ketiadaan sistem validasi pembayaran.</p>
+                    </div>
+                    
+                    <div class="col strategy-block danger">
+                        <div class="col-header">
+                            <i class="ph ph-chart-line-down" style="color: inherit;"></i> Stagnasi Skalabilitas
+                        </div>
+                        <p>Selama arsitektur sistem bertumpu pada "tenaga admin mengetik di Excel", kapasitas operasional Arum Raga telah mencapai batas atasnya.</p>
+                        <p>Bisnis tidak akan bisa memproses lonjakan volume tamu secara efisien tanpa harus menanggung inefisiensi biaya penambahan jumlah admin secara terus-menerus.</p>
+                    </div>
+                    
+                    <div class="col strategy-block danger">
+                        <div class="col-header">
+                            <i class="ph ph-database" style="color: inherit;"></i> Data Pelanggan Berserakan
+                        </div>
+                        <p>Tidak adanya sistem CRM (Customer Relationship Management) otomatis membuat data pelanggan setia sulit dihimpun dan diolah.</p>
+                        <p>Tanpa database yang terstruktur, pelaksanaan kampanye promo yang tepat sasaran menjadi mustahil, berujung pada tertahannya tingkat retensi tamu.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- SLIDE 4: BLUEPRINT -->
         <section class="slide">
-            <div class="tag success">Tahap 2 • Blueprint</div>
-            <h2 class="title">Menyelaraskan Arah Pertumbuhan</h2>
-            <p class="subtitle">Untuk menutup kebocoran, Estetio merancang Blueprint yang menyelaraskan 3 pilar utama arah bisnis Arum Raga.</p>
+            <div class="slide-header">
+                <div class="kicker">
+                    <span>Tahap 2: Blueprint Strategi</span>
+                    <div class="tracker">
+                        <span>• Assessment</span>
+                        <span class="active">• Strategy</span>
+                        <span>• Implementation</span>
+                    </div>
+                </div>
+                <h2 class="action-title">Transformasi Arum Raga membutuhkan penyelarasan ulang pada tiga pilar utama: Positioning digital, rute akuisisi, dan struktur operasional.</h2>
+            </div>
+            
+            <div class="content-area">
+                <div class="column-layout">
+                    <div class="col strategy-block">
+                        <div class="tag">Pilar 1: Positioning</div>
+                        <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-navy);">Fokus pada Brand Trust & SEO Lokal</h3>
+                        <p><strong>Arah Baru:</strong> Membangun Website Resmi sebagai aset properti digital mandiri yang premium.</p>
+                        <div class="insight-box">
+                            <strong>Tujuan Strategis:</strong><br>
+                            Menangkap intent pencarian tinggi dari Google ("Spa Terdekat") dan membangun <em>Trust</em> absolut guna meningkatkan konversi untuk paket <em>High-Ticket</em> (Pre-Wedding, dll).
+                        </div>
+                    </div>
 
-            <div class="grid-3">
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-target"></i></div>
-                    <h3>1. Clear Positioning</h3>
-                    <p><strong>Arah Baru:</strong> Membangun Website Resmi sebagai aset digital mandiri.</p>
-                    <p><strong>Tujuan:</strong> Menangkap intent tinggi dari Google ("Spa Terdekat") dan membangun Trust absolut untuk konversi paket High-Ticket.</p>
-                </div>
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-funnel"></i></div>
-                    <h3>2. Funnel & Messaging</h3>
-                    <p><strong>Arah Baru:</strong> Memisahkan traffic berdasarkan kesiapan tamu.</p>
-                    <p><strong>Hot:</strong> Diarahkan ke Dedicated Booking Page.<br><strong>Warm:</strong> Dilayani via WA, namun checkout/DP ditutup menggunakan Payment Link sistem resmi.</p>
-                </div>
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-cpu"></i></div>
-                    <h3>3. Operational Structure</h3>
-                    <p><strong>Arah Baru:</strong> Mengganti operasional "berbasis kepercayaan" menjadi "berbasis sistem pengawasan".</p>
-                    <p><strong>Tujuan:</strong> Menutup celah fraud karyawan dan mengotomatisasi pekerjaan administratif via Estetio OS.</p>
+                    <div class="col strategy-block">
+                        <div class="tag">Pilar 2: Funnel Alignment</div>
+                        <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-navy);">Jalur Akuisisi Ganda (Dual-Routing)</h3>
+                        <p><strong>Arah Baru:</strong> Memisahkan penanganan traffic berdasarkan tingkat kesiapan (intent) tamu.</p>
+                        <ul class="consulting-list">
+                            <li><strong>Hot Traffic:</strong> Diarahkan ke Dedicated Booking Page untuk reservasi mandiri (selesai dalam 1 menit).</li>
+                            <li><strong>Warm Traffic:</strong> Tetap dilayani CS via WA, namun penutupan checkout & DP diwajibkan melalui Payment Link sistem.</li>
+                        </ul>
+                    </div>
+
+                    <div class="col strategy-block">
+                        <div class="tag">Pilar 3: Operational Structure</div>
+                        <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-navy);">Keamanan & Otomatisasi Terpusat</h3>
+                        <p><strong>Arah Baru:</strong> Mengganti operasional tradisional "berbasis kepercayaan" menjadi operasional mutlak "berbasis sistem pengawasan" melalui Estetio OS.</p>
+                        <div class="insight-box">
+                            <strong>Tujuan Strategis:</strong><br>
+                            Menutup permanen celah fraud karyawan dan mengotomatisasi beban kerja administratif (rekap jadwal, komisi, feedback).
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 5: THE NEW JOURNEY -->
+        <!-- SLIDE 5: THE NEW JOURNEY (CHEVRON) -->
         <section class="slide">
-            <div class="tag">Arsitektur Pengalaman</div>
-            <h2 class="title">The New Journey</h2>
-            <p class="subtitle">Bagaimana sistem Estetio bekerja secara End-to-End mengawal perjalanan tamu Arum Raga.</p>
+            <div class="slide-header">
+                <div class="kicker">
+                    <span>Arsitektur Pengalaman Terpadu</span>
+                    <div class="tracker">
+                        <span>• Assessment</span>
+                        <span class="active">• Strategy</span>
+                        <span>• Implementation</span>
+                    </div>
+                </div>
+                <h2 class="action-title">Sistem terpadu secara end-to-end mengeliminasi antrean reservasi, mengunci pendapatan secara aman, dan menggerakkan mesin retensi secara otomatis.</h2>
+            </div>
+            
+            <div class="content-area">
+                <div class="chevron-container">
+                    <div class="chevron">
+                        <h3>1. Pre-Arrival</h3>
+                        <div class="step-label">Frictionless Discovery & Booking</div>
+                        <ul class="consulting-list">
+                            <li>Tamu menemukan Arum Raga via Google/IG dan masuk ke Website/Katalog Digital.</li>
+                            <li>Memilih layanan & ketersediaan jam secara mandiri.</li>
+                            <li><strong>Auto-WA Confirmation</strong> terkirim otomatis beserta Link DP. Antrean chat tereliminasi.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chevron">
+                        <h3>2. On-Site</h3>
+                        <div class="step-label">Smart & Secure Operations</div>
+                        <ul class="consulting-list">
+                            <li>Tamu tiba, kasir memproses data secara instan melalui iPad POS Estetio.</li>
+                            <li>Sistem secara mandiri memaksa kasir untuk menawarkan layanan <em>Upsell</em>.</li>
+                            <li>Pembayaran diproses menggunakan <strong>Dynamic QRIS</strong> (Dana 100% ke perusahaan, anti-fraud).</li>
+                        </ul>
+                    </div>
 
-            <div class="flow-container">
-                <div class="flow-step">
-                    <div class="step-number">1</div>
-                    <div class="card-icon" style="background: white;"><i class="ph ph-device-mobile"></i></div>
-                    <h3>Pre-Arrival</h3>
-                    <p style="color: var(--accent-primary); font-weight: 600; margin-bottom: 16px;">Frictionless Booking</p>
-                    <ul class="modern-list">
-                        <li>Tamu masuk Website/Katalog.</li>
-                        <li>Memilih layanan & jam tanpa antre WA.</li>
-                        <li>Auto-WA Confirmation terkirim (beserta Link DP jika perlu).</li>
-                    </ul>
-                </div>
-                <div class="flow-arrow"><i class="ph-bold ph-caret-right"></i></div>
-                <div class="flow-step">
-                    <div class="step-number">2</div>
-                    <div class="card-icon" style="background: white;"><i class="ph ph-storefront"></i></div>
-                    <h3>On-Site</h3>
-                    <p style="color: var(--accent-primary); font-weight: 600; margin-bottom: 16px;">Smart & Secure</p>
-                    <ul class="modern-list">
-                        <li>Kasir memproses via iPad POS Estetio.</li>
-                        <li>Sistem memaksa kasir menawarkan Upsell.</li>
-                        <li>Bayar via Dynamic QRIS (Uang masuk 100% ke rekening perusahaan).</li>
-                    </ul>
-                </div>
-                <div class="flow-arrow"><i class="ph-bold ph-caret-right"></i></div>
-                <div class="flow-step">
-                    <div class="step-number">3</div>
-                    <div class="card-icon" style="background: white;"><i class="ph ph-arrows-clockwise"></i></div>
-                    <h3>Post-Visit</h3>
-                    <p style="color: var(--accent-primary); font-weight: 600; margin-bottom: 16px;">Automated Growth</p>
-                    <ul class="modern-list">
-                        <li>Komisi terapis otomatis terhitung.</li>
-                        <li><strong>H+1:</strong> Auto-WA meminta Review Google.</li>
-                        <li><strong>H+30:</strong> Auto-WA mengirim Win-Back promo agar tamu kembali.</li>
-                    </ul>
+                    <div class="chevron">
+                        <h3>3. Post-Visit</h3>
+                        <div class="step-label">Automated Growth Engine</div>
+                        <ul class="consulting-list">
+                            <li>Transaksi lunas memicu perhitungan komisi terapis otomatis.</li>
+                            <li><strong>H+1:</strong> Sistem trigger Auto-WA meminta Review Google Maps.</li>
+                            <li><strong>H+30:</strong> Sistem mengeksekusi kampanye Win-Back promo untuk mendikte pembelian ulang.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- SLIDE 6: DESIGN SYSTEM -->
         <section class="slide">
-            <div class="tag">Tahap 3 • Design System</div>
-            <h2 class="title">Membangun Ekosistem Digital</h2>
-            <p class="subtitle">Blueprint strategi kini kami terjemahkan ke dalam 3 struktur nyata yang saling terintegrasi (Estetio Ecosystem).</p>
+            <div class="slide-header">
+                <div class="kicker">
+                    <span>Tahap 3: Design System</span>
+                    <div class="tracker">
+                        <span>• Assessment</span>
+                        <span class="active">• Strategy</span>
+                        <span>• Implementation</span>
+                    </div>
+                </div>
+                <h2 class="action-title">Cetak biru strategi diterjemahkan ke dalam tiga platform digital terintegrasi untuk mengawal ekosistem tamu, staf, dan pemilik bisnis.</h2>
+            </div>
+            
+            <div class="content-area">
+                <div class="column-layout">
+                    <div class="col strategy-block">
+                        <div class="col-header"><i class="ph ph-browser"></i> The Digital Storefront</div>
+                        <ul class="consulting-list">
+                            <li><strong>Platform:</strong> Landing Page Premium (arumraga.com) dan Dedicated Booking Page.</li>
+                            <li><strong>Fungsi Strategis:</strong> Menyatukan positioning brand yang elegan dengan copywriting persuasif. Tampilan dirancang mencerminkan estetika Wellness & Spa untuk mengunci <em>trust</em> pengunjung secara instan.</li>
+                        </ul>
+                    </div>
 
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon"><i class="ph ph-browser"></i></div>
-                    <h3>Brand & Comm. System</h3>
-                    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">The Digital Storefront</p>
-                    <p><strong>Platform:</strong> Landing Page Premium (arumraga.com) & Dedicated Booking Page.</p>
-                    <p><strong>Fungsi:</strong> Menyatukan positioning elegan dengan copy persuasif untuk meningkatkan trust instan.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="ph ph-laptop"></i></div>
-                    <h3>Customer Journey Struct.</h3>
-                    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">The Engine & OS</p>
-                    <p><strong>Platform:</strong> Estetio Smart POS & Automated WhatsApp.</p>
-                    <p><strong>Fungsi:</strong> SOP tertanam di sistem. Sistem mengunci pembayaran sebelum kasir menawarkan Upsell, & mengirim Payment Link resmi.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="ph ph-chart-bar"></i></div>
-                    <h3>Measurement Framework</h3>
-                    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">The Control Room</p>
-                    <p><strong>Platform:</strong> Estetio Owner Dashboard.</p>
-                    <p><strong>Fungsi:</strong> Melacak metrik:<br>- Konversi & Upsell Rate<br>- Fraud Control (Audit Trail & QRIS)<br>- Retention Rate (Auto-WA).</p>
+                    <div class="col strategy-block">
+                        <div class="col-header"><i class="ph ph-laptop"></i> The Engine & OS</div>
+                        <ul class="consulting-list">
+                            <li><strong>Platform:</strong> Estetio Smart POS (Admin) & Automated WhatsApp (Tamu).</li>
+                            <li><strong>Fungsi Strategis:</strong> SOP ditanamkan secara <em>hardcoded</em> ke dalam sistem. Contoh: Sistem mengunci tombol pembayaran sebelum kasir menawarkan Add-on/Upsell, dan mengirim Payment Link resmi secara otomatis.</li>
+                        </ul>
+                    </div>
+
+                    <div class="col strategy-block">
+                        <div class="col-header"><i class="ph ph-chart-bar"></i> The Control Room</div>
+                        <ul class="consulting-list">
+                            <li><strong>Platform:</strong> Estetio Owner Dashboard.</li>
+                            <li><strong>Fungsi Strategis (Metrik Real-time):</strong>
+                                <ul style="list-style-type: circle; padding-left: 20px; margin-top: 8px; font-size: 13.5px; color: var(--text-dark);">
+                                    <li style="margin-bottom: 5px;"><strong>Konversi & Upsell:</strong> Performa kasir/terapis.</li>
+                                    <li style="margin-bottom: 5px;"><strong>Fraud Control:</strong> Pengawasan Dynamic QRIS & Audit Trail. Data tidak bisa dihapus tanpa jejak.</li>
+                                    <li><strong>Retention Rate:</strong> Persentase booking ulang.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- SLIDE 7: EXECUTION -->
         <section class="slide">
-            <div class="tag">Tahap 4 • Execution</div>
-            <h2 class="title">Implementasi & Optimasi Berkelanjutan</h2>
-            <p class="subtitle">Kami tidak hanya membangun sistem lalu pergi. Estetio memastikan transisi operasional berjalan disiplin dan terukur.</p>
-
-            <div class="grid-3">
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-graduation-cap"></i></div>
-                    <h3>1. Staff Onboarding</h3>
-                    <ul class="modern-list">
-                        <li>Sesi pelatihan khusus untuk Admin, Kasir, dan Terapis Arum Raga.</li>
-                        <li>Mengedukasi penggunaan OS dan menanamkan mindset transparansi komisi.</li>
-                    </ul>
+            <div class="slide-header">
+                <div class="kicker">
+                    <span>Tahap 4: Eksekusi & Optimasi</span>
+                    <div class="tracker">
+                        <span>• Assessment</span>
+                        <span>• Strategy</span>
+                        <span class="active">• Implementation</span>
+                    </div>
                 </div>
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-rocket-launch"></i></div>
-                    <h3>2. Go-Live & Funnel</h3>
-                    <ul class="modern-list">
-                        <li>Peluncuran Landing Page dan optimasi Local SEO.</li>
-                        <li>Pemasangan Booking Link pada seluruh aset digital (IG, TikTok, WA).</li>
-                    </ul>
-                </div>
-                <div class="card bg-alt">
-                    <div class="card-icon"><i class="ph ph-presentation-chart"></i></div>
-                    <h3>3. Monthly Review</h3>
-                    <ul class="modern-list">
-                        <li><strong>Fraud Log:</strong> Laporan rekonsiliasi kas.</li>
-                        <li><strong>Upsell Win-Rate:</strong> Terapis pencetak cuan terbanyak.</li>
-                        <li><strong>Retention Rate:</strong> Hasil Auto-WA Win-Back.</li>
-                    </ul>
-                </div>
+                <h2 class="action-title">Implementasi sistem akan dikawal ketat melalui program pelatihan, aktivasi digital, dan evaluasi performa bulanan untuk memastikan adopsi.</h2>
             </div>
-        </section>
+            
+            <div class="content-area">
+                <div class="column-layout">
+                    <div class="col strategy-block">
+                        <h3 style="font-size: 17px; color: var(--primary-navy); margin-bottom: 5px;">1. Staff Onboarding & Training</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 11px; text-transform: uppercase; margin-bottom: 15px;">Experience Refinement</p>
+                        <ul class="consulting-list">
+                            <li>Pelaksanaan sesi pelatihan khusus untuk Admin, Kasir, dan Terapis Arum Raga.</li>
+                            <li>Mengedukasi operasional Estetio OS (iPad/Laptop).</li>
+                            <li><strong>Change Management:</strong> Menanamkan mindset bahwa sistem ini menjamin pencairan komisi mereka secara lebih akurat, cepat, dan transparan.</li>
+                        </ul>
+                    </div>
 
-        <!-- SLIDE 8: TIMELINE & INVESTMENT -->
-        <section class="slide" style="background-color: var(--bg-body);">
-            <div class="tag" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white;">Roadmap</div>
-            <h2 class="title" style="color: white;">Timeline & The Investment</h2>
-            <p class="subtitle" style="color: #94A3B8;">Peta jalan menuju operasional modern yang bebas cemas.</p>
+                    <div class="col strategy-block">
+                        <h3 style="font-size: 17px; color: var(--primary-navy); margin-bottom: 5px;">2. Go-Live & Funnel Activation</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 11px; text-transform: uppercase; margin-bottom: 15px;">Marketing Campaigns</p>
+                        <ul class="consulting-list">
+                            <li>Peluncuran resmi Landing Page (arumraga.com) disertai dengan inisiasi optimasi Local SEO.</li>
+                            <li>Distribusi dan pemasangan Booking Link pada seluruh titik kontak aset digital Arum Raga (Bio Instagram, TikTok, dan sistem Auto-Reply WhatsApp).</li>
+                        </ul>
+                    </div>
 
-            <div class="grid-2">
-                <div class="card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">
-                    <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 16px;">Timeline Implementasi <span style="font-size: 13px; font-weight: normal; color: #94A3B8;">(3-4 Minggu)</span></h3>
-                    <ul class="modern-list">
-                        <li style="color: #CBD5E1;"><strong style="color: white;">Minggu 1:</strong> Data Ingestion & Desain Web UI/UX.</li>
-                        <li style="color: #CBD5E1;"><strong style="color: white;">Minggu 2:</strong> Setup Estetio OS (POS, QRIS Dinamis, Logic Komisi).</li>
-                        <li style="color: #CBD5E1;"><strong style="color: white;">Minggu 3:</strong> Testing Internal & Revisi.</li>
-                        <li style="color: #CBD5E1;"><strong style="color: white;">Minggu 4:</strong> Training Staf Arum Raga & Go-Live.</li>
-                    </ul>
-                </div>
-                
-                <div class="card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: white;">
-                    <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 16px;">Investasi Transformasi Digital</h3>
-                    <ul class="modern-list" style="margin-bottom: 16px;">
-                        <li style="color: #CBD5E1;"><strong style="color: white;">One-Time Setup Fee: Rp [X.000.000]</strong><br>Pembuatan Landing Page Premium, Setup Database Estetio OS, & Integrasi Payment Gateway.</li>
-                        <li style="color: #CBD5E1;"><strong style="color: white;">Estetio Growth Subscription: Rp [X00.000] / Bln</strong><br>Server, Maintenance Web, Kuota Auto-WA Blast CRM, & Laporan Analytics.</li>
-                    </ul>
-                    <div style="background: rgba(14, 165, 233, 0.1); border-left: 3px solid var(--accent-primary); padding: 12px; border-radius: 0 8px 8px 0;">
-                        <p style="margin: 0; font-size: 12.5px; color: #E0F2FE;"><strong>ROI Note:</strong> Nilai investasi dapat tercapai hanya dengan menyelamatkan 2-3 potensi transaksi yang sebelumnya bocor (fraud/no-show) setiap bulannya.</p>
+                    <div class="col strategy-block">
+                        <h3 style="font-size: 17px; color: var(--primary-navy); margin-bottom: 5px;">3. Monthly Performance Review</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 11px; text-transform: uppercase; margin-bottom: 15px;">Performance Tracking</p>
+                        <ul class="consulting-list">
+                            <li><strong>Fraud Log:</strong> Laporan rekonsiliasi kas vs sistem untuk memvalidasi keamanan operasional (100% aman).</li>
+                            <li><strong>Upsell Win-Rate:</strong> Identifikasi terapis/admin yang mencetak pendapatan tambahan tertinggi.</li>
+                            <li><strong>Retention Rate:</strong> Kalkulasi konversi tamu yang kembali booking dari kampanye Auto-WA Win-Back.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Global Footer Navigation (Fixed) -->
-        <div class="slide-footer" style="z-index: 1000; pointer-events: none;">
-            <div class="slide-counter" id="slideCounter" style="pointer-events: auto;">01 / 08</div>
-            <div class="controls" style="pointer-events: auto;">
-                <button class="btn-nav" id="btnPrev"><i class="ph-bold ph-arrow-left"></i></button>
-                <button class="btn-nav" id="btnNext"><i class="ph-bold ph-arrow-right"></i></button>
+        <!-- SLIDE 8: TIMELINE & INVESTMENT -->
+        <section class="slide">
+            <div class="slide-header">
+                <div class="kicker">
+                    <span>Peta Jalan & Investasi</span>
+                    <div class="tracker">
+                        <span>• Assessment</span>
+                        <span>• Strategy</span>
+                        <span class="active">• Implementation</span>
+                    </div>
+                </div>
+                <h2 class="action-title">Transformasi dapat diselesaikan dalam 4 minggu, dengan proyeksi ROI yang tercapai hanya dengan menyelamatkan 2-3 kebocoran transaksi per bulan.</h2>
+            </div>
+            
+            <div class="content-area">
+                <div class="column-layout">
+                    <!-- Timeline Section -->
+                    <div class="col strategy-block" style="flex: 1.2;">
+                        <div class="col-header"><i class="ph ph-calendar-check"></i> Timeline Implementasi (3-4 Minggu)</div>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px;">
+                            <tr style="border-bottom: 1px solid var(--border-light);">
+                                <td style="padding: 15px 10px; font-weight: 700; width: 110px; color: var(--primary-navy);">Minggu 1</td>
+                                <td style="padding: 15px 10px; line-height: 1.5;">Data Ingestion & Perancangan Web UI/UX.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);">
+                                <td style="padding: 15px 10px; font-weight: 700; color: var(--primary-navy);">Minggu 2</td>
+                                <td style="padding: 15px 10px; line-height: 1.5;">Setup Estetio OS (Konfigurasi POS, integrasi QRIS Dinamis, penyusunan Logic Komisi).</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);">
+                                <td style="padding: 15px 10px; font-weight: 700; color: var(--primary-navy);">Minggu 3</td>
+                                <td style="padding: 15px 10px; line-height: 1.5;">Testing Internal menyeluruh & Proses Revisi.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 15px 10px; font-weight: 700; color: var(--primary-navy);">Minggu 4</td>
+                                <td style="padding: 15px 10px; line-height: 1.5;">Training menyeluruh bagi Staf Arum Raga & Eksekusi Go-Live.</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Investment Section -->
+                    <div class="col strategy-block" style="flex: 1; background: var(--bg-light); border-top: 4px solid var(--primary-navy);">
+                        <h3 style="font-size: 18px; color: var(--primary-navy); margin-bottom: 20px;">Investasi Transformasi Digital</h3>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--primary-navy);">One-Time Setup Fee: Rp [X.000.000]</strong>
+                            <p style="font-size: 13.5px; color: var(--text-muted); margin: 0;">Mencakup pembuatan Landing Page Premium, Setup Database Estetio OS, dan Integrasi Payment Gateway.</p>
+                        </div>
+
+                        <div style="margin-bottom: 25px;">
+                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--primary-navy);">Estetio Growth Subscription: Rp [X00.000] / Bulan</strong>
+                            <p style="font-size: 13.5px; color: var(--text-muted); margin: 0;">Mencakup Cloud Server, Maintenance Web, Kuota Auto-WA Blast CRM, dan Laporan Analytics Bulanan.</p>
+                        </div>
+
+                        <div class="insight-box" style="margin: 0; background: var(--white);">
+                            <strong>ROI Justification:</strong><br>
+                            Nilai investasi bulanan ini dapat tertutup (Break-even) hanya dengan menyelamatkan <strong>2-3 potensi transaksi</strong> yang sebelumnya bocor akibat fraud atau batal akibat <em>no-show</em> di sistem manual.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GLOBAL FOOTER (Interactive Navigation) -->
+        <div class="slide-footer" id="slideFooter">
+            <div class="footer-left">
+                <strong>ESTETIO GROWTH</strong>
+                <span style="color: #D9D9D9;">|</span>
+                <span>Arum Raga Blueprint</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <span id="slideCounter">1 / 8</span>
+                <div class="controls">
+                    <button class="btn-nav" id="btnPrev"><i class="ph-bold ph-caret-left"></i></button>
+                    <button class="btn-nav" id="btnNext"><i class="ph-bold ph-caret-right"></i></button>
+                </div>
             </div>
         </div>
 
@@ -648,54 +920,43 @@
         document.addEventListener('DOMContentLoaded', () => {
             const slides = document.querySelectorAll('.slide');
             const counter = document.getElementById('slideCounter');
-            const headerText = document.querySelector('.brand');
             const btnPrev = document.getElementById('btnPrev');
             const btnNext = document.getElementById('btnNext');
+            const slideFooter = document.getElementById('slideFooter');
             let currentSlide = 0;
 
             function updateSlide() {
                 if (!slides || slides.length === 0) return;
 
-                slides.forEach(slide => slide.classList.remove('active'));
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
                 
+                // Show current slide
                 if (slides[currentSlide]) {
                     slides[currentSlide].classList.add('active');
                 }
                 
-                const currentNum = (currentSlide + 1).toString().padStart(2, '0');
-                const totalNum = slides.length.toString().padStart(2, '0');
+                // Update counter
                 if (counter) {
-                    counter.innerText = `${currentNum} / ${totalNum}`;
+                    counter.innerText = `${currentSlide + 1} / ${slides.length}`;
                 }
 
-                if (slides[currentSlide]) {
-                    const bgStyle = window.getComputedStyle(slides[currentSlide]).backgroundColor;
-                    const isDarkSlide = bgStyle === 'rgb(15, 23, 42)' || bgStyle === 'rgba(15, 23, 42, 1)' || slides[currentSlide].style.backgroundColor.includes('var(--bg-body)');
-                    
-                    if(isDarkSlide) {
-                        if (headerText) headerText.style.color = '#FFFFFF';
-                        if (counter) {
-                            counter.style.background = 'rgba(255,255,255,0.1)';
-                            counter.style.color = '#FFFFFF';
-                        }
-                        document.querySelectorAll('.btn-nav').forEach(btn => {
-                            btn.style.background = 'rgba(255,255,255,0.1)';
-                            btn.style.color = '#FFFFFF';
-                            btn.style.borderColor = 'rgba(255,255,255,0.1)';
-                        });
-                    } else {
-                        if (headerText) headerText.style.color = '#0F172A';
-                        if (counter) {
-                            counter.style.background = 'rgba(255, 255, 255, 0.8)';
-                            counter.style.color = '#64748B';
-                        }
-                        document.querySelectorAll('.btn-nav').forEach(btn => {
-                            btn.style.background = '#F8FAFC';
-                            btn.style.color = '#0F172A';
-                            btn.style.borderColor = '#E2E8F0';
-                        });
-                    }
+                // Handle Footer visibility for Cover Slide
+                if (currentSlide === 0) {
+                    slideFooter.classList.add('on-cover');
+                    slideFooter.style.transform = 'translateY(0)';
+                    slideFooter.style.opacity = '1';
+                } else {
+                    slideFooter.classList.remove('on-cover');
+                    slideFooter.style.transform = 'translateY(0)';
+                    slideFooter.style.opacity = '1';
                 }
+
+                // Update Button States
+                if (btnPrev) btnPrev.disabled = currentSlide === 0;
+                if (btnNext) btnNext.disabled = currentSlide === slides.length - 1;
             }
 
             function nextSlide() {
@@ -712,23 +973,37 @@
                 }
             }
 
+            // Click Events
             if (btnPrev) btnPrev.addEventListener('click', prevSlide);
             if (btnNext) btnNext.addEventListener('click', nextSlide);
 
+            // Keyboard Navigation (Space & Arrows)
             document.addEventListener('keydown', (e) => {
+                // Prevent interfering with forms if any exist
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
                 if (e.key === 'ArrowRight' || e.key === ' ' || e.code === 'Space') {
-                    e.preventDefault(); 
+                    e.preventDefault(); // Mencegah scroll ke bawah saat tekan Spasi
                     nextSlide();
                 }
                 if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
                     prevSlide();
                 }
             });
 
+            // Double Click anywhere on slide to go next (bonus interactivity)
+            document.querySelector('.deck-container').addEventListener('dblclick', (e) => {
+                // Don't trigger if clicking on footer buttons
+                if(!e.target.closest('.slide-footer')) {
+                    nextSlide();
+                }
+            });
+
+            // Initialize
             updateSlide();
         });
     </script>
 </body>
 </html>
+```
