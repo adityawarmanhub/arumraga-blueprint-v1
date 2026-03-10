@@ -37,40 +37,37 @@
             box-sizing: border-box;
         }
 
+        /* TRUE FULL SCREEN SETUP */
         body {
-            background-color: #1A1A1A; /* Latar belakang gelap ala Mode Presentasi */
+            background-color: var(--white);
             font-family: var(--font-main);
             color: var(--text-dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             width: 100vw;
+            height: 100vh;
             overflow: hidden;
             margin: 0;
+            padding: 0;
         }
 
-        /* FIXED 1920x1080 CANVAS - SCALED VIA JS */
+        /* FLUID CANVAS */
         .deck-container {
-            position: absolute;
-            width: 1920px;
-            height: 1080px;
+            position: relative;
+            width: 100%;
+            height: 100%;
             background-color: var(--white);
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transform-origin: center center; /* JS will scale from center */
         }
 
-        /* CONSULTING HEADER (Tracker & Action Title) */
+        /* CONSULTING HEADER */
         .slide-header {
-            padding: 50px 80px 30px 80px; 
-            border-bottom: 3px solid var(--primary-navy);
+            padding: 4vh 5vw 2vh 5vw; 
+            border-bottom: 0.3vh solid var(--primary-navy);
             background: var(--white);
             z-index: 20;
             position: relative;
-            transform: translateY(-20px);
+            transform: translateY(-2vh);
             opacity: 0;
             transition: all var(--transition-speed) ease;
         }
@@ -82,20 +79,20 @@
         }
 
         .kicker {
-            font-size: 16px;
+            font-size: 1.5vh;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.2vw;
             color: var(--secondary-blue);
-            margin-bottom: 15px; 
+            margin-bottom: 1.5vh; 
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 2vw;
         }
 
         .kicker .tracker {
             display: flex;
-            gap: 15px;
+            gap: 1vw;
             color: #BDBDBD;
         }
 
@@ -104,17 +101,17 @@
             font-weight: 800;
         }
 
-        /* THE ACTION TITLE - Hallmark of Top Tier Consulting */
+        /* ACTION TITLE */
         .action-title {
-            font-size: 36px; 
+            font-size: 3.5vh; 
             font-weight: 700;
             color: var(--primary-navy);
             line-height: 1.35;
             margin: 0;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.05vw;
         }
 
-        /* Slides Core */
+        /* SLIDES CORE */
         .slide {
             position: absolute;
             top: 0;
@@ -136,12 +133,12 @@
         }
 
         .content-area {
-            padding: 40px 80px 100px 80px; 
+            padding: 3vh 5vw 8vh 5vw; /* 8vh bottom padding for footer clearance */
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(2vh);
             transition: all var(--transition-speed) ease;
             min-height: 0; 
         }
@@ -158,15 +155,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 80px; 
-            padding: 0 80px;
+            height: 7vh; 
+            padding: 0 5vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: var(--white);
-            border-top: 1px solid var(--border-light);
+            border-top: 0.1vh solid var(--border-light);
             z-index: 50;
-            font-size: 18px;
+            font-size: 1.6vh;
             color: var(--text-muted);
             font-weight: 600;
             transition: all 0.3s ease;
@@ -175,43 +172,43 @@
         .footer-left {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 2vw;
             transition: opacity 0.3s ease;
         }
 
         .footer-left strong {
             color: var(--primary-navy);
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.1vw;
         }
 
         .controls {
             display: flex;
-            gap: 12px;
+            gap: 0.8vw;
             pointer-events: auto;
         }
 
         .btn-nav {
             background: var(--bg-light);
-            border: 1px solid var(--border-light);
+            border: 0.1vh solid var(--border-light);
             color: var(--primary-navy);
-            width: 48px; 
-            height: 48px;
-            border-radius: 8px;
+            width: 4.5vh; 
+            height: 4.5vh;
+            border-radius: 0.8vh;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 24px;
+            font-size: 2.2vh;
         }
 
         .btn-nav:hover {
             background: var(--secondary-blue);
             color: var(--white);
             border-color: var(--secondary-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 114, 206, 0.2);
+            transform: translateY(-0.3vh);
+            box-shadow: 0 0.6vh 1.2vh rgba(0, 114, 206, 0.2);
         }
 
         .btn-nav:active {
@@ -229,7 +226,7 @@
             font-variant-numeric: tabular-nums;
             font-weight: 700;
             color: var(--primary-navy);
-            font-size: 20px;
+            font-size: 1.8vh;
         }
 
         /* SPECIAL STATE: COVER SLIDE FOOTER */
@@ -259,20 +256,20 @@
         .slide-cover {
             background: linear-gradient(135deg, var(--primary-navy) 0%, #00152e 100%);
             color: var(--white);
-            padding: 80px 120px;
+            padding: 8vh 10vw;
             justify-content: center;
         }
 
         .slide-cover h1 {
-            font-size: 72px;
+            font-size: 7vh;
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 30px;
+            margin-bottom: 3vh;
             color: var(--white);
-            max-width: 1400px;
-            letter-spacing: -1.5px;
+            max-width: 80vw;
+            letter-spacing: -0.1vw;
             opacity: 0;
-            transform: translateX(-40px);
+            transform: translateX(-3vw);
             transition: all 0.8s ease;
         }
 
@@ -283,13 +280,13 @@
         }
 
         .slide-cover .subtitle {
-            font-size: 32px;
+            font-size: 3vh;
             color: var(--accent-blue);
             font-weight: 500;
-            border-left: 6px solid var(--accent-blue);
-            padding-left: 30px;
+            border-left: 0.5vw solid var(--accent-blue);
+            padding-left: 2vw;
             opacity: 0;
-            transform: translateX(-40px);
+            transform: translateX(-3vw);
             transition: all 0.8s ease;
         }
 
@@ -301,11 +298,11 @@
 
         .slide-cover .branding {
             position: absolute;
-            bottom: 80px;
-            left: 120px;
-            font-size: 24px;
+            bottom: 8vh;
+            left: 10vw;
+            font-size: 2.2vh;
             font-weight: 700;
-            letter-spacing: 4px;
+            letter-spacing: 0.4vw;
             text-transform: uppercase;
             color: var(--white);
             opacity: 0;
@@ -320,9 +317,10 @@
         /* LAYOUTS & INTERACTIVE BLOCKS */
         .column-layout {
             display: flex;
-            gap: 40px; 
+            gap: 2.5vw; 
             flex-grow: 1;
             min-height: 0; 
+            align-items: stretch;
         }
 
         .col {
@@ -333,59 +331,62 @@
         }
 
         .col-header {
-            font-size: 26px; 
+            font-size: 2.6vh; 
             font-weight: 700;
             color: var(--primary-navy);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--border-light);
+            margin-bottom: 2vh;
+            padding-bottom: 1.5vh;
+            border-bottom: 0.2vh solid var(--border-light);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 1vw;
+            flex-shrink: 0;
         }
 
         .col-header i {
             color: var(--secondary-blue);
-            font-size: 32px;
+            font-size: 3.2vh;
         }
 
         /* Block structure for Strategy (Interactive Feel) */
         .strategy-block {
             background: var(--white);
-            border: 1px solid var(--border-light);
-            padding: 35px 40px; 
+            border: 0.1vh solid var(--border-light);
+            padding: 3vh 2.5vw; 
             height: 100%;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.4vh 0.6vh rgba(0,0,0,0.02);
+            flex-grow: 1;
         }
 
         .strategy-block:hover {
-            box-shadow: 0 15px 30px rgba(0, 40, 85, 0.08);
+            box-shadow: 0 1.5vh 3vh rgba(0, 40, 85, 0.08);
             border-color: var(--secondary-blue);
         }
 
         .strategy-block .tag {
             background: var(--primary-navy);
             color: var(--white);
-            font-size: 14px;
+            font-size: 1.4vh;
             font-weight: 700;
-            padding: 8px 16px;
+            padding: 0.8vh 1.5vw;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 2vh;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.1vw;
             align-self: flex-start;
+            flex-shrink: 0;
         }
 
         .strategy-block.danger {
-            border-top: 6px solid var(--danger-red);
+            border-top: 0.6vh solid var(--danger-red);
         }
         
         .strategy-block.danger:hover {
             border-color: var(--danger-red);
-            box-shadow: 0 15px 30px rgba(211, 47, 47, 0.08);
+            box-shadow: 0 1.5vh 3vh rgba(211, 47, 47, 0.08);
         }
 
         .strategy-block.danger .col-header {
@@ -396,9 +397,9 @@
 
         /* Typography & Lists */
         p {
-            font-size: 20px;
+            font-size: 2.1vh;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 2vh;
         }
 
         ul {
@@ -407,11 +408,15 @@
             margin: 0;
         }
 
+        ul.consulting-list {
+            flex-grow: 1;
+        }
+
         ul.consulting-list > li {
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 20px;
-            font-size: 20px;
+            padding-left: 2vw;
+            margin-bottom: 2vh;
+            font-size: 2vh;
             line-height: 1.6;
             color: var(--text-dark);
         }
@@ -420,26 +425,27 @@
             content: '■';
             position: absolute;
             left: 0;
-            top: 4px;
+            top: 0.4vh;
             color: var(--secondary-blue);
-            font-size: 14px;
+            font-size: 1.4vh;
         }
 
         ul.consulting-list > li > strong {
             color: var(--primary-navy);
             display: block;
-            margin-bottom: 8px;
-            font-size: 22px;
+            margin-bottom: 0.8vh;
+            font-size: 2.2vh;
         }
 
         /* Callout / Insight Box */
         .insight-box {
             background-color: var(--bg-light);
-            border-left: 6px solid var(--secondary-blue);
-            padding: 20px 25px; 
-            margin-top: 25px; 
-            font-size: 20px;
+            border-left: 0.5vw solid var(--secondary-blue);
+            padding: 2vh 1.5vw; 
+            margin-top: auto; /* Pushes to bottom to distribute empty space */
+            font-size: 2vh;
             line-height: 1.6;
+            flex-shrink: 0;
         }
 
         /* CHEVRON FLOW (Value Chain Style) */
@@ -447,8 +453,8 @@
             display: flex;
             width: 100%;
             flex-grow: 1;
-            margin-top: 25px;
-            gap: 6px;
+            margin-top: 2.5vh;
+            gap: 0.5vw;
             min-height: 0;
         }
 
@@ -456,7 +462,7 @@
             flex: 1;
             background-color: var(--bg-light);
             position: relative;
-            padding: 40px 50px 40px 60px; 
+            padding: 4vh 4vw 4vh 4vw; 
             clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%);
             display: flex;
             flex-direction: column;
@@ -466,11 +472,11 @@
         .chevron:hover {
             transform: scale(1.02);
             z-index: 2;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 1.5vh 3vh rgba(0,0,0,0.1);
         }
 
         .chevron:first-child {
-            padding-left: 40px;
+            padding-left: 4vw;
             clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
             background-color: var(--primary-navy);
             color: var(--white);
@@ -487,37 +493,38 @@
         }
 
         .chevron h3 {
-            font-size: 28px;
+            font-size: 3vh;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 1.2vh;
             color: inherit;
         }
 
         .chevron .step-label {
-            font-size: 16px;
+            font-size: 1.6vh;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
+            letter-spacing: 0.1vw;
+            margin-bottom: 2.5vh;
             font-weight: 700;
             opacity: 0.85;
         }
 
-        .chevron ul.consulting-list > li { color: inherit; font-size: 20px; margin-bottom: 16px;}
-        .chevron ul.consulting-list > li::before { color: var(--white); opacity: 0.6; top: 5px; }
-        .chevron ul.consulting-list > li > strong { color: inherit; font-size: 22px;}
+        .chevron ul.consulting-list > li { color: inherit; font-size: 2vh; margin-bottom: 1.6vh;}
+        .chevron ul.consulting-list > li::before { color: var(--white); opacity: 0.6; top: 0.5vh; }
+        .chevron ul.consulting-list > li > strong { color: inherit; font-size: 2.2vh;}
 
         /* Timeline Table */
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 20px;
-            margin-top: 15px;
+            font-size: 2vh;
+            margin-top: 1.5vh;
+            flex-grow: 1;
         }
         
         td {
-            padding: 24px 20px;
+            padding: 2.5vh 1.5vw;
             line-height: 1.6;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 0.1vh solid var(--border-light);
         }
 
     </style>
@@ -645,7 +652,7 @@
                 <div class="column-layout">
                     <div class="col strategy-block">
                         <div class="tag">Pilar 1: Positioning</div>
-                        <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-navy);">Fokus pada Brand Trust & SEO Lokal</h3>
+                        <h3 style="font-size: 2.2vh; margin-bottom: 1.5vh; color: var(--primary-navy);">Fokus pada Brand Trust & SEO Lokal</h3>
                         <p><strong>Arah Baru:</strong> Membangun Website Resmi sebagai aset properti digital mandiri yang premium.</p>
                         <div class="insight-box">
                             <strong>Tujuan Strategis:</strong><br>
@@ -655,7 +662,7 @@
 
                     <div class="col strategy-block">
                         <div class="tag">Pilar 2: Funnel Alignment</div>
-                        <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-navy);">Jalur Akuisisi Ganda (Dual-Routing)</h3>
+                        <h3 style="font-size: 2.2vh; margin-bottom: 1.5vh; color: var(--primary-navy);">Jalur Akuisisi Ganda (Dual-Routing)</h3>
                         <p><strong>Arah Baru:</strong> Memisahkan penanganan traffic berdasarkan tingkat kesiapan (intent) tamu.</p>
                         <ul class="consulting-list">
                             <li><strong>Hot Traffic:</strong> Diarahkan ke Dedicated Booking Page untuk reservasi mandiri (selesai dalam 1 menit).</li>
@@ -665,7 +672,7 @@
 
                     <div class="col strategy-block">
                         <div class="tag">Pilar 3: Operational Structure</div>
-                        <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-navy);">Keamanan & Otomatisasi Terpusat</h3>
+                        <h3 style="font-size: 2.2vh; margin-bottom: 1.5vh; color: var(--primary-navy);">Keamanan & Otomatisasi Terpusat</h3>
                         <p><strong>Arah Baru:</strong> Mengganti operasional tradisional "berbasis kepercayaan" menjadi operasional mutlak "berbasis sistem pengawasan" melalui Estetio OS.</p>
                         <div class="insight-box">
                             <strong>Tujuan Strategis:</strong><br>
@@ -762,9 +769,9 @@
                         <ul class="consulting-list">
                             <li><strong>Platform:</strong> Estetio Owner Dashboard.</li>
                             <li><strong>Fungsi Strategis (Metrik Real-time):</strong>
-                                <ul style="list-style-type: circle; padding-left: 30px; margin-top: 15px; font-size: 20px; color: var(--text-dark);">
-                                    <li style="margin-bottom: 10px;"><strong>Konversi & Upsell:</strong> Performa kasir/terapis.</li>
-                                    <li style="margin-bottom: 10px;"><strong>Fraud Control:</strong> Pengawasan Dynamic QRIS & Audit Trail. Data tidak bisa dihapus tanpa jejak.</li>
+                                <ul style="list-style-type: circle; padding-left: 2vw; margin-top: 1.5vh; font-size: 2vh; color: var(--text-dark);">
+                                    <li style="margin-bottom: 1vh;"><strong>Konversi & Upsell:</strong> Performa kasir/terapis.</li>
+                                    <li style="margin-bottom: 1vh;"><strong>Fraud Control:</strong> Pengawasan Dynamic QRIS & Audit Trail. Data tidak bisa dihapus tanpa jejak.</li>
                                     <li><strong>Retention Rate:</strong> Persentase booking ulang.</li>
                                 </ul>
                             </li>
@@ -791,8 +798,8 @@
             <div class="content-area">
                 <div class="column-layout">
                     <div class="col strategy-block">
-                        <h3 style="font-size: 24px; color: var(--primary-navy); margin-bottom: 10px;">1. Staff Onboarding & Training</h3>
-                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">Experience Refinement</p>
+                        <h3 style="font-size: 2.4vh; color: var(--primary-navy); margin-bottom: 1vh;">1. Staff Onboarding & Training</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 1.4vh; text-transform: uppercase; margin-bottom: 2vh;">Experience Refinement</p>
                         <ul class="consulting-list">
                             <li>Pelaksanaan sesi pelatihan khusus untuk Admin, Kasir, dan Terapis Arum Raga.</li>
                             <li>Mengedukasi operasional Estetio OS (iPad/Laptop).</li>
@@ -801,8 +808,8 @@
                     </div>
 
                     <div class="col strategy-block">
-                        <h3 style="font-size: 24px; color: var(--primary-navy); margin-bottom: 10px;">2. Go-Live & Funnel Activation</h3>
-                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">Marketing Campaigns</p>
+                        <h3 style="font-size: 2.4vh; color: var(--primary-navy); margin-bottom: 1vh;">2. Go-Live & Funnel Activation</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 1.4vh; text-transform: uppercase; margin-bottom: 2vh;">Marketing Campaigns</p>
                         <ul class="consulting-list">
                             <li>Peluncuran resmi Landing Page (arumraga.com) disertai dengan inisiasi optimasi Local SEO.</li>
                             <li>Distribusi dan pemasangan Booking Link pada seluruh titik kontak aset digital Arum Raga (Bio Instagram, TikTok, dan sistem Auto-Reply WhatsApp).</li>
@@ -810,8 +817,8 @@
                     </div>
 
                     <div class="col strategy-block">
-                        <h3 style="font-size: 24px; color: var(--primary-navy); margin-bottom: 10px;">3. Monthly Performance Review</h3>
-                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">Performance Tracking</p>
+                        <h3 style="font-size: 2.4vh; color: var(--primary-navy); margin-bottom: 1vh;">3. Monthly Performance Review</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 1.4vh; text-transform: uppercase; margin-bottom: 2vh;">Performance Tracking</p>
                         <ul class="consulting-list">
                             <li><strong>Fraud Log:</strong> Laporan rekonsiliasi kas vs sistem untuk memvalidasi keamanan operasional (100% aman).</li>
                             <li><strong>Upsell Win-Rate:</strong> Identifikasi terapis/admin yang mencetak pendapatan tambahan tertinggi.</li>
@@ -843,7 +850,7 @@
                         <div class="col-header"><i class="ph ph-calendar-check"></i> Timeline Implementasi (3-4 Minggu)</div>
                         <table>
                             <tr>
-                                <td style="font-weight: 700; width: 140px; color: var(--primary-navy);">Minggu 1</td>
+                                <td style="font-weight: 700; width: 12vw; color: var(--primary-navy);">Minggu 1</td>
                                 <td>Data Ingestion & Perancangan Web UI/UX.</td>
                             </tr>
                             <tr>
@@ -862,20 +869,20 @@
                     </div>
 
                     <!-- Investment Section -->
-                    <div class="col strategy-block" style="flex: 1; background: var(--bg-light); border-top: 6px solid var(--primary-navy);">
-                        <h3 style="font-size: 26px; color: var(--primary-navy); margin-bottom: 30px;">Investasi Transformasi Digital</h3>
+                    <div class="col strategy-block" style="flex: 1; background: var(--bg-light); border-top: 0.6vh solid var(--primary-navy);">
+                        <h3 style="font-size: 2.6vh; color: var(--primary-navy); margin-bottom: 3vh;">Investasi Transformasi Digital</h3>
                         
-                        <div style="margin-bottom: 30px;">
-                            <strong style="font-size: 22px; display: block; margin-bottom: 8px; color: var(--primary-navy);">One-Time Setup Fee: Rp [X.000.000]</strong>
-                            <p style="color: var(--text-muted); margin: 0;">Mencakup pembuatan Landing Page Premium, Setup Database Estetio OS, dan Integrasi Payment Gateway.</p>
+                        <div style="margin-bottom: 3vh;">
+                            <strong style="font-size: 2.2vh; display: block; margin-bottom: 0.8vh; color: var(--primary-navy);">One-Time Setup Fee: Rp [X.000.000]</strong>
+                            <p style="color: var(--text-muted); margin: 0; font-size: 1.8vh;">Mencakup pembuatan Landing Page Premium, Setup Database Estetio OS, dan Integrasi Payment Gateway.</p>
                         </div>
 
-                        <div style="margin-bottom: 35px;">
-                            <strong style="font-size: 22px; display: block; margin-bottom: 8px; color: var(--primary-navy);">Estetio Growth Subscription: Rp [X00.000] / Bulan</strong>
-                            <p style="color: var(--text-muted); margin: 0;">Mencakup Cloud Server, Maintenance Web, Kuota Auto-WA Blast CRM, dan Laporan Analytics Bulanan.</p>
+                        <div style="margin-bottom: 3.5vh;">
+                            <strong style="font-size: 2.2vh; display: block; margin-bottom: 0.8vh; color: var(--primary-navy);">Estetio Growth Subscription: Rp [X00.000] / Bulan</strong>
+                            <p style="color: var(--text-muted); margin: 0; font-size: 1.8vh;">Mencakup Cloud Server, Maintenance Web, Kuota Auto-WA Blast CRM, dan Laporan Analytics Bulanan.</p>
                         </div>
 
-                        <div class="insight-box" style="margin: 0; background: var(--white);">
+                        <div class="insight-box" style="margin: 0; background: var(--white); margin-top: auto;">
                             <strong>ROI Justification:</strong><br>
                             Nilai investasi bulanan ini dapat tertutup (Break-even) hanya dengan menyelamatkan <strong>2-3 potensi transaksi</strong> yang sebelumnya bocor akibat fraud atau batal akibat <em>no-show</em> di sistem manual.
                         </div>
@@ -892,7 +899,7 @@
                 <span>Arum Raga Blueprint</span>
             </div>
             
-            <div style="display: flex; align-items: center; gap: 30px;">
+            <div style="display: flex; align-items: center; gap: 3vw;">
                 <span id="slideCounter">1 / 8</span>
                 <div class="controls">
                     <button class="btn-nav" id="btnPrev"><i class="ph-bold ph-caret-left"></i></button>
@@ -912,26 +919,6 @@
             const slideFooter = document.getElementById('slideFooter');
             const deck = document.querySelector('.deck-container');
             let currentSlide = 0;
-
-            // SCALING LOGIC: Makes the presentation fit any screen perfectly like a real PowerPoint
-            function resizeDeck() {
-                const windowWidth = window.innerWidth;
-                const windowHeight = window.innerHeight;
-                
-                // Target resolution is 1920x1080
-                const scaleX = windowWidth / 1920;
-                const scaleY = windowHeight / 1080;
-                
-                // Use the smallest scale to ensure it always fits without cropping
-                const scale = Math.min(scaleX, scaleY);
-                
-                // Apply the scale
-                deck.style.transform = `scale(${scale})`;
-            }
-
-            // Call resize on load and window resize
-            window.addEventListener('resize', resizeDeck);
-            resizeDeck(); // Initial call
 
             // SLIDE LOGIC
             function updateSlide() {
