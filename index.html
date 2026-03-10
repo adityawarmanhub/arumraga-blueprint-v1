@@ -38,36 +38,35 @@
         }
 
         body {
-            background-color: #E5E7EB; /* Latar belakang luar presentasi */
+            background-color: #1A1A1A; /* Latar belakang gelap ala Mode Presentasi */
             font-family: var(--font-main);
             color: var(--text-dark);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100vw;
             overflow: hidden;
-            padding: 20px;
+            margin: 0;
         }
 
-        /* 16:9 Presentation Canvas - Interactive & Responsive */
+        /* FIXED 1920x1080 CANVAS - SCALED VIA JS */
         .deck-container {
-            position: relative;
-            width: 100%;
-            max-width: 1280px;
-            aspect-ratio: 16 / 9;
-            max-height: 95vh;
+            position: absolute;
+            width: 1920px;
+            height: 1080px;
             background-color: var(--white);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border-radius: 8px;
+            transform-origin: center center; /* JS will scale from center */
         }
 
         /* CONSULTING HEADER (Tracker & Action Title) */
         .slide-header {
-            padding: 20px 40px 15px 40px; /* Padding diperkecil */
-            border-bottom: 2px solid var(--primary-navy);
+            padding: 50px 80px 30px 80px; 
+            border-bottom: 3px solid var(--primary-navy);
             background: var(--white);
             z-index: 20;
             position: relative;
@@ -83,20 +82,20 @@
         }
 
         .kicker {
-            font-size: 11px;
+            font-size: 16px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--secondary-blue);
-            margin-bottom: 8px; /* Diperkecil */
+            margin-bottom: 15px; 
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .kicker .tracker {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             color: #BDBDBD;
         }
 
@@ -107,10 +106,10 @@
 
         /* THE ACTION TITLE - Hallmark of Top Tier Consulting */
         .action-title {
-            font-size: 22px; /* Ukuran font diperkecil */
+            font-size: 36px; 
             font-weight: 700;
             color: var(--primary-navy);
-            line-height: 1.3;
+            line-height: 1.35;
             margin: 0;
             letter-spacing: -0.5px;
         }
@@ -137,14 +136,14 @@
         }
 
         .content-area {
-            padding: 20px 40px 60px 40px; /* Padding bawah diperkecil agar tidak menabrak footer */
+            padding: 40px 80px 100px 80px; 
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             opacity: 0;
             transform: translateY(20px);
             transition: all var(--transition-speed) ease;
-            min-height: 0; /* Penting agar isi tidak meluap */
+            min-height: 0; 
         }
 
         .slide.active .content-area {
@@ -159,36 +158,36 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 50px; /* Tinggi footer diperkecil */
-            padding: 0 40px;
+            height: 80px; 
+            padding: 0 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: var(--white);
             border-top: 1px solid var(--border-light);
             z-index: 50;
-            font-size: 12px;
+            font-size: 18px;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .footer-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             transition: opacity 0.3s ease;
         }
 
         .footer-left strong {
             color: var(--primary-navy);
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .controls {
             display: flex;
-            gap: 8px;
+            gap: 12px;
             pointer-events: auto;
         }
 
@@ -196,15 +195,15 @@
             background: var(--bg-light);
             border: 1px solid var(--border-light);
             color: var(--primary-navy);
-            width: 32px; /* Diperkecil */
-            height: 32px;
-            border-radius: 6px;
+            width: 48px; 
+            height: 48px;
+            border-radius: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 14px;
+            font-size: 24px;
         }
 
         .btn-nav:hover {
@@ -212,7 +211,7 @@
             color: var(--white);
             border-color: var(--secondary-blue);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 114, 206, 0.2);
+            box-shadow: 0 6px 12px rgba(0, 114, 206, 0.2);
         }
 
         .btn-nav:active {
@@ -230,7 +229,7 @@
             font-variant-numeric: tabular-nums;
             font-weight: 700;
             color: var(--primary-navy);
-            font-size: 14px;
+            font-size: 20px;
         }
 
         /* SPECIAL STATE: COVER SLIDE FOOTER */
@@ -260,20 +259,20 @@
         .slide-cover {
             background: linear-gradient(135deg, var(--primary-navy) 0%, #00152e 100%);
             color: var(--white);
-            padding: 60px 80px;
+            padding: 80px 120px;
             justify-content: center;
         }
 
         .slide-cover h1 {
-            font-size: 44px;
+            font-size: 72px;
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: var(--white);
-            max-width: 1000px;
-            letter-spacing: -1px;
+            max-width: 1400px;
+            letter-spacing: -1.5px;
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateX(-40px);
             transition: all 0.8s ease;
         }
 
@@ -284,13 +283,13 @@
         }
 
         .slide-cover .subtitle {
-            font-size: 20px;
+            font-size: 32px;
             color: var(--accent-blue);
             font-weight: 500;
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 20px;
+            border-left: 6px solid var(--accent-blue);
+            padding-left: 30px;
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateX(-40px);
             transition: all 0.8s ease;
         }
 
@@ -302,11 +301,11 @@
 
         .slide-cover .branding {
             position: absolute;
-            bottom: 60px;
-            left: 80px;
-            font-size: 14px;
+            bottom: 80px;
+            left: 120px;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--white);
             opacity: 0;
@@ -321,78 +320,72 @@
         /* LAYOUTS & INTERACTIVE BLOCKS */
         .column-layout {
             display: flex;
-            gap: 20px; /* Diperkecil */
+            gap: 40px; 
             flex-grow: 1;
-            min-height: 0; /* Penting untuk scroll */
+            min-height: 0; 
         }
 
         .col {
             flex: 1;
             display: flex;
             flex-direction: column;
-            min-height: 0; /* Penting untuk scroll */
+            min-height: 0; 
         }
 
         .col-header {
-            font-size: 16px; /* Diperkecil */
+            font-size: 26px; 
             font-weight: 700;
             color: var(--primary-navy);
-            margin-bottom: 12px;
-            padding-bottom: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 2px solid var(--border-light);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .col-header i {
             color: var(--secondary-blue);
-            font-size: 20px;
+            font-size: 32px;
         }
 
         /* Block structure for Strategy (Interactive Feel) */
         .strategy-block {
             background: var(--white);
             border: 1px solid var(--border-light);
-            padding: 18px 20px; /* Diperkecil */
+            padding: 35px 40px; 
             height: 100%;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            overflow-y: auto; /* Mencegah teks terpotong */
             display: flex;
             flex-direction: column;
         }
 
-        /* Custom Scrollbar untuk kotak konten */
-        .strategy-block::-webkit-scrollbar { width: 5px; }
-        .strategy-block::-webkit-scrollbar-track { background: transparent; }
-        .strategy-block::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 5px; }
-        .strategy-block:hover::-webkit-scrollbar-thumb { background: #BDBDBD; }
-
         .strategy-block:hover {
-            box-shadow: 0 10px 20px rgba(0, 40, 85, 0.08);
+            box-shadow: 0 15px 30px rgba(0, 40, 85, 0.08);
             border-color: var(--secondary-blue);
         }
 
         .strategy-block .tag {
             background: var(--primary-navy);
             color: var(--white);
-            font-size: 10px;
+            font-size: 14px;
             font-weight: 700;
-            padding: 4px 10px;
+            padding: 8px 16px;
             display: inline-block;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            align-self: flex-start;
         }
 
         .strategy-block.danger {
-            border-top: 4px solid var(--danger-red);
+            border-top: 6px solid var(--danger-red);
         }
         
         .strategy-block.danger:hover {
             border-color: var(--danger-red);
-            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.08);
+            box-shadow: 0 15px 30px rgba(211, 47, 47, 0.08);
         }
 
         .strategy-block.danger .col-header {
@@ -403,9 +396,9 @@
 
         /* Typography & Lists */
         p {
-            font-size: 13.5px;
-            line-height: 1.5;
-            margin-bottom: 12px;
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
         ul {
@@ -416,10 +409,10 @@
 
         ul.consulting-list > li {
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
-            font-size: 13.5px;
-            line-height: 1.5;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            line-height: 1.6;
             color: var(--text-dark);
         }
 
@@ -427,26 +420,26 @@
             content: '■';
             position: absolute;
             left: 0;
-            top: 2px;
+            top: 4px;
             color: var(--secondary-blue);
-            font-size: 10px;
+            font-size: 14px;
         }
 
         ul.consulting-list > li > strong {
             color: var(--primary-navy);
             display: block;
-            margin-bottom: 4px;
-            font-size: 14px;
+            margin-bottom: 8px;
+            font-size: 22px;
         }
 
         /* Callout / Insight Box */
         .insight-box {
             background-color: var(--bg-light);
-            border-left: 4px solid var(--secondary-blue);
-            padding: 12px 16px; /* Diperkecil */
-            margin-top: 15px; /* Margin diperkecil */
-            font-size: 13px;
-            line-height: 1.5;
+            border-left: 6px solid var(--secondary-blue);
+            padding: 20px 25px; 
+            margin-top: 25px; 
+            font-size: 20px;
+            line-height: 1.6;
         }
 
         /* CHEVRON FLOW (Value Chain Style) */
@@ -454,8 +447,8 @@
             display: flex;
             width: 100%;
             flex-grow: 1;
-            margin-top: 15px;
-            gap: 4px;
+            margin-top: 25px;
+            gap: 6px;
             min-height: 0;
         }
 
@@ -463,74 +456,68 @@
             flex: 1;
             background-color: var(--bg-light);
             position: relative;
-            padding: 20px 25px 20px 35px; /* Diperkecil */
+            padding: 40px 50px 40px 60px; 
             clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%);
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
-            overflow-y: auto; /* Bisa di-scroll jika kepanjangan */
         }
-        
-        .chevron::-webkit-scrollbar { width: 4px; }
-        .chevron::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
 
         .chevron:hover {
             transform: scale(1.02);
             z-index: 2;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .chevron:first-child {
-            padding-left: 25px;
+            padding-left: 40px;
             clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
             background-color: var(--primary-navy);
             color: var(--white);
         }
 
-        .chevron:first-child::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
-
         .chevron:nth-child(2) {
             background-color: var(--secondary-blue);
             color: var(--white);
         }
-        .chevron:nth-child(2)::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
 
         .chevron:nth-child(3) {
             background-color: var(--accent-blue);
             color: var(--white);
         }
-        .chevron:nth-child(3)::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
 
         .chevron h3 {
-            font-size: 18px;
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             color: inherit;
         }
 
         .chevron .step-label {
-            font-size: 11px;
+            font-size: 16px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
             font-weight: 700;
             opacity: 0.85;
         }
 
-        .chevron ul.consulting-list > li { color: inherit; font-size: 13px; margin-bottom: 10px;}
-        .chevron ul.consulting-list > li::before { color: var(--white); opacity: 0.6; }
-        .chevron ul.consulting-list > li > strong { color: inherit; font-size: 13.5px;}
+        .chevron ul.consulting-list > li { color: inherit; font-size: 20px; margin-bottom: 16px;}
+        .chevron ul.consulting-list > li::before { color: var(--white); opacity: 0.6; top: 5px; }
+        .chevron ul.consulting-list > li > strong { color: inherit; font-size: 22px;}
 
-        /* Media Adjustments for smaller laptop screens */
-        @media (max-width: 1150px) {
-            .slide-cover h1 { font-size: 36px; }
-            .action-title { font-size: 19px; }
-            .slide-header { padding: 15px 30px 10px 30px; }
-            .content-area { padding: 15px 30px 50px 30px; }
-            .slide-cover { padding: 40px 60px; }
-            .slide-cover .branding { left: 60px; bottom: 40px; }
-            .strategy-block { padding: 15px; }
-            p, ul.consulting-list > li { font-size: 12.5px; }
+        /* Timeline Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        
+        td {
+            padding: 24px 20px;
+            line-height: 1.6;
+            border-bottom: 1px solid var(--border-light);
         }
 
     </style>
@@ -658,7 +645,7 @@
                 <div class="column-layout">
                     <div class="col strategy-block">
                         <div class="tag">Pilar 1: Positioning</div>
-                        <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-navy);">Fokus pada Brand Trust & SEO Lokal</h3>
+                        <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-navy);">Fokus pada Brand Trust & SEO Lokal</h3>
                         <p><strong>Arah Baru:</strong> Membangun Website Resmi sebagai aset properti digital mandiri yang premium.</p>
                         <div class="insight-box">
                             <strong>Tujuan Strategis:</strong><br>
@@ -668,7 +655,7 @@
 
                     <div class="col strategy-block">
                         <div class="tag">Pilar 2: Funnel Alignment</div>
-                        <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-navy);">Jalur Akuisisi Ganda (Dual-Routing)</h3>
+                        <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-navy);">Jalur Akuisisi Ganda (Dual-Routing)</h3>
                         <p><strong>Arah Baru:</strong> Memisahkan penanganan traffic berdasarkan tingkat kesiapan (intent) tamu.</p>
                         <ul class="consulting-list">
                             <li><strong>Hot Traffic:</strong> Diarahkan ke Dedicated Booking Page untuk reservasi mandiri (selesai dalam 1 menit).</li>
@@ -678,7 +665,7 @@
 
                     <div class="col strategy-block">
                         <div class="tag">Pilar 3: Operational Structure</div>
-                        <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-navy);">Keamanan & Otomatisasi Terpusat</h3>
+                        <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-navy);">Keamanan & Otomatisasi Terpusat</h3>
                         <p><strong>Arah Baru:</strong> Mengganti operasional tradisional "berbasis kepercayaan" menjadi operasional mutlak "berbasis sistem pengawasan" melalui Estetio OS.</p>
                         <div class="insight-box">
                             <strong>Tujuan Strategis:</strong><br>
@@ -775,9 +762,9 @@
                         <ul class="consulting-list">
                             <li><strong>Platform:</strong> Estetio Owner Dashboard.</li>
                             <li><strong>Fungsi Strategis (Metrik Real-time):</strong>
-                                <ul style="list-style-type: circle; padding-left: 20px; margin-top: 8px; font-size: 13.5px; color: var(--text-dark);">
-                                    <li style="margin-bottom: 5px;"><strong>Konversi & Upsell:</strong> Performa kasir/terapis.</li>
-                                    <li style="margin-bottom: 5px;"><strong>Fraud Control:</strong> Pengawasan Dynamic QRIS & Audit Trail. Data tidak bisa dihapus tanpa jejak.</li>
+                                <ul style="list-style-type: circle; padding-left: 30px; margin-top: 15px; font-size: 20px; color: var(--text-dark);">
+                                    <li style="margin-bottom: 10px;"><strong>Konversi & Upsell:</strong> Performa kasir/terapis.</li>
+                                    <li style="margin-bottom: 10px;"><strong>Fraud Control:</strong> Pengawasan Dynamic QRIS & Audit Trail. Data tidak bisa dihapus tanpa jejak.</li>
                                     <li><strong>Retention Rate:</strong> Persentase booking ulang.</li>
                                 </ul>
                             </li>
@@ -804,8 +791,8 @@
             <div class="content-area">
                 <div class="column-layout">
                     <div class="col strategy-block">
-                        <h3 style="font-size: 17px; color: var(--primary-navy); margin-bottom: 5px;">1. Staff Onboarding & Training</h3>
-                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 11px; text-transform: uppercase; margin-bottom: 15px;">Experience Refinement</p>
+                        <h3 style="font-size: 24px; color: var(--primary-navy); margin-bottom: 10px;">1. Staff Onboarding & Training</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">Experience Refinement</p>
                         <ul class="consulting-list">
                             <li>Pelaksanaan sesi pelatihan khusus untuk Admin, Kasir, dan Terapis Arum Raga.</li>
                             <li>Mengedukasi operasional Estetio OS (iPad/Laptop).</li>
@@ -814,8 +801,8 @@
                     </div>
 
                     <div class="col strategy-block">
-                        <h3 style="font-size: 17px; color: var(--primary-navy); margin-bottom: 5px;">2. Go-Live & Funnel Activation</h3>
-                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 11px; text-transform: uppercase; margin-bottom: 15px;">Marketing Campaigns</p>
+                        <h3 style="font-size: 24px; color: var(--primary-navy); margin-bottom: 10px;">2. Go-Live & Funnel Activation</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">Marketing Campaigns</p>
                         <ul class="consulting-list">
                             <li>Peluncuran resmi Landing Page (arumraga.com) disertai dengan inisiasi optimasi Local SEO.</li>
                             <li>Distribusi dan pemasangan Booking Link pada seluruh titik kontak aset digital Arum Raga (Bio Instagram, TikTok, dan sistem Auto-Reply WhatsApp).</li>
@@ -823,8 +810,8 @@
                     </div>
 
                     <div class="col strategy-block">
-                        <h3 style="font-size: 17px; color: var(--primary-navy); margin-bottom: 5px;">3. Monthly Performance Review</h3>
-                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 11px; text-transform: uppercase; margin-bottom: 15px;">Performance Tracking</p>
+                        <h3 style="font-size: 24px; color: var(--primary-navy); margin-bottom: 10px;">3. Monthly Performance Review</h3>
+                        <p style="color: var(--secondary-blue); font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 20px;">Performance Tracking</p>
                         <ul class="consulting-list">
                             <li><strong>Fraud Log:</strong> Laporan rekonsiliasi kas vs sistem untuk memvalidasi keamanan operasional (100% aman).</li>
                             <li><strong>Upsell Win-Rate:</strong> Identifikasi terapis/admin yang mencetak pendapatan tambahan tertinggi.</li>
@@ -854,38 +841,38 @@
                     <!-- Timeline Section -->
                     <div class="col strategy-block" style="flex: 1.2;">
                         <div class="col-header"><i class="ph ph-calendar-check"></i> Timeline Implementasi (3-4 Minggu)</div>
-                        <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px;">
-                            <tr style="border-bottom: 1px solid var(--border-light);">
-                                <td style="padding: 15px 10px; font-weight: 700; width: 110px; color: var(--primary-navy);">Minggu 1</td>
-                                <td style="padding: 15px 10px; line-height: 1.5;">Data Ingestion & Perancangan Web UI/UX.</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-light);">
-                                <td style="padding: 15px 10px; font-weight: 700; color: var(--primary-navy);">Minggu 2</td>
-                                <td style="padding: 15px 10px; line-height: 1.5;">Setup Estetio OS (Konfigurasi POS, integrasi QRIS Dinamis, penyusunan Logic Komisi).</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-light);">
-                                <td style="padding: 15px 10px; font-weight: 700; color: var(--primary-navy);">Minggu 3</td>
-                                <td style="padding: 15px 10px; line-height: 1.5;">Testing Internal menyeluruh & Proses Revisi.</td>
+                        <table>
+                            <tr>
+                                <td style="font-weight: 700; width: 140px; color: var(--primary-navy);">Minggu 1</td>
+                                <td>Data Ingestion & Perancangan Web UI/UX.</td>
                             </tr>
                             <tr>
-                                <td style="padding: 15px 10px; font-weight: 700; color: var(--primary-navy);">Minggu 4</td>
-                                <td style="padding: 15px 10px; line-height: 1.5;">Training menyeluruh bagi Staf Arum Raga & Eksekusi Go-Live.</td>
+                                <td style="font-weight: 700; color: var(--primary-navy);">Minggu 2</td>
+                                <td>Setup Estetio OS (Konfigurasi POS, integrasi QRIS Dinamis, penyusunan Logic Komisi).</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: var(--primary-navy);">Minggu 3</td>
+                                <td>Testing Internal menyeluruh & Proses Revisi.</td>
+                            </tr>
+                            <tr style="border-bottom: none;">
+                                <td style="font-weight: 700; color: var(--primary-navy);">Minggu 4</td>
+                                <td>Training menyeluruh bagi Staf Arum Raga & Eksekusi Go-Live.</td>
                             </tr>
                         </table>
                     </div>
 
                     <!-- Investment Section -->
-                    <div class="col strategy-block" style="flex: 1; background: var(--bg-light); border-top: 4px solid var(--primary-navy);">
-                        <h3 style="font-size: 18px; color: var(--primary-navy); margin-bottom: 20px;">Investasi Transformasi Digital</h3>
+                    <div class="col strategy-block" style="flex: 1; background: var(--bg-light); border-top: 6px solid var(--primary-navy);">
+                        <h3 style="font-size: 26px; color: var(--primary-navy); margin-bottom: 30px;">Investasi Transformasi Digital</h3>
                         
-                        <div style="margin-bottom: 20px;">
-                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--primary-navy);">One-Time Setup Fee: Rp [X.000.000]</strong>
-                            <p style="font-size: 13.5px; color: var(--text-muted); margin: 0;">Mencakup pembuatan Landing Page Premium, Setup Database Estetio OS, dan Integrasi Payment Gateway.</p>
+                        <div style="margin-bottom: 30px;">
+                            <strong style="font-size: 22px; display: block; margin-bottom: 8px; color: var(--primary-navy);">One-Time Setup Fee: Rp [X.000.000]</strong>
+                            <p style="color: var(--text-muted); margin: 0;">Mencakup pembuatan Landing Page Premium, Setup Database Estetio OS, dan Integrasi Payment Gateway.</p>
                         </div>
 
-                        <div style="margin-bottom: 25px;">
-                            <strong style="font-size: 15px; display: block; margin-bottom: 5px; color: var(--primary-navy);">Estetio Growth Subscription: Rp [X00.000] / Bulan</strong>
-                            <p style="font-size: 13.5px; color: var(--text-muted); margin: 0;">Mencakup Cloud Server, Maintenance Web, Kuota Auto-WA Blast CRM, dan Laporan Analytics Bulanan.</p>
+                        <div style="margin-bottom: 35px;">
+                            <strong style="font-size: 22px; display: block; margin-bottom: 8px; color: var(--primary-navy);">Estetio Growth Subscription: Rp [X00.000] / Bulan</strong>
+                            <p style="color: var(--text-muted); margin: 0;">Mencakup Cloud Server, Maintenance Web, Kuota Auto-WA Blast CRM, dan Laporan Analytics Bulanan.</p>
                         </div>
 
                         <div class="insight-box" style="margin: 0; background: var(--white);">
@@ -905,7 +892,7 @@
                 <span>Arum Raga Blueprint</span>
             </div>
             
-            <div style="display: flex; align-items: center; gap: 24px;">
+            <div style="display: flex; align-items: center; gap: 30px;">
                 <span id="slideCounter">1 / 8</span>
                 <div class="controls">
                     <button class="btn-nav" id="btnPrev"><i class="ph-bold ph-caret-left"></i></button>
@@ -923,8 +910,30 @@
             const btnPrev = document.getElementById('btnPrev');
             const btnNext = document.getElementById('btnNext');
             const slideFooter = document.getElementById('slideFooter');
+            const deck = document.querySelector('.deck-container');
             let currentSlide = 0;
 
+            // SCALING LOGIC: Makes the presentation fit any screen perfectly like a real PowerPoint
+            function resizeDeck() {
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+                
+                // Target resolution is 1920x1080
+                const scaleX = windowWidth / 1920;
+                const scaleY = windowHeight / 1080;
+                
+                // Use the smallest scale to ensure it always fits without cropping
+                const scale = Math.min(scaleX, scaleY);
+                
+                // Apply the scale
+                deck.style.transform = `scale(${scale})`;
+            }
+
+            // Call resize on load and window resize
+            window.addEventListener('resize', resizeDeck);
+            resizeDeck(); // Initial call
+
+            // SLIDE LOGIC
             function updateSlide() {
                 if (!slides || slides.length === 0) return;
 
@@ -946,12 +955,8 @@
                 // Handle Footer visibility for Cover Slide
                 if (currentSlide === 0) {
                     slideFooter.classList.add('on-cover');
-                    slideFooter.style.transform = 'translateY(0)';
-                    slideFooter.style.opacity = '1';
                 } else {
                     slideFooter.classList.remove('on-cover');
-                    slideFooter.style.transform = 'translateY(0)';
-                    slideFooter.style.opacity = '1';
                 }
 
                 // Update Button States
@@ -993,7 +998,7 @@
             });
 
             // Double Click anywhere on slide to go next (bonus interactivity)
-            document.querySelector('.deck-container').addEventListener('dblclick', (e) => {
+            deck.addEventListener('dblclick', (e) => {
                 // Don't trigger if clicking on footer buttons
                 if(!e.target.closest('.slide-footer')) {
                     nextSlide();
@@ -1006,4 +1011,3 @@
     </script>
 </body>
 </html>
-```
